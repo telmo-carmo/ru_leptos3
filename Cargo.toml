@@ -1,7 +1,7 @@
 [package]
 name = "ru_leptos3"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -37,6 +37,8 @@ ssr = [
     "dep:tokio",
     "dep:leptos_axum",
     "dep:sqlx",
+    "dep:axum_session",
+    "dep:axum_session_sqlx",
     "leptos/ssr",
     "leptos_meta/ssr",
     "leptos_router/ssr",
