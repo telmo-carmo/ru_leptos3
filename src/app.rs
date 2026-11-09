@@ -52,9 +52,13 @@ pub fn App() -> impl IntoView {
 /// Renders the home page of your application.
 #[component]
 fn HomePage() -> impl IntoView {
+    use leptos::logging::log;
     // Creates a reactive value to update the button
     let count = RwSignal::new(0);
-    let on_click = move |_| *count.write() += 1;
+    let on_click = move |_| { 
+        *count.write() += 1;
+        log!("Button clicked! Count is now: {}", *count.read());
+    };
 
     view! {
         <h1>"Home Page!"</h1>

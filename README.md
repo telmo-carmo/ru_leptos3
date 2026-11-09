@@ -94,6 +94,9 @@ This template itself is released under the Unlicense. You should replace the LIC
 
 ```bash
 
+https://reintech.io/blog/building-web-applications-with-leptos-complete-guide-2026
+
+
 cargo install cargo-generate
 cargo generate --git https://github.com/leptos-rs/start-axum
 cd your-project-name

@@ -16,6 +16,7 @@ leptos_meta = { version = "0.8" }
 tokio = { version = "1", features = ["rt-multi-thread"], optional = true }
 wasm-bindgen = { version = "0.2.130", optional = true }
 leptos-struct-table = "0.19"
+dotenvy = "0.15.7"
 
 [features]
 hydrate = [
