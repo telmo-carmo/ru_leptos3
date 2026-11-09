@@ -1,7 +1,7 @@
 use leptos::prelude::*;
 use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title};
 use leptos_router::{
-    components::{Route, Router, Routes},
+    components::{Route, Router, Routes,A},
     StaticSegment,
 };
 use leptos_struct_table::*;
@@ -39,9 +39,16 @@ pub fn App() -> impl IntoView {
 
         // content for this welcome page
         <Router>
+                <nav style="padding: 0.5rem; border-bottom: 1px solid #ddd">
+                    <A href="/">"Home"</A>
+                    " | "
+                    <A href="/about">"About"</A>
+                    " | "
+                    <A href="/todos">"Todos"</A>
+                </nav>
             <main>
                 <Routes fallback=|| "Page not found.".into_view()>
-                    <Route path=StaticSegment("") view=HomePage/>
+                    <Route path=StaticSegment("")       view=HomePage/>
                     <Route path=StaticSegment("/about") view=AboutPage/>
                 </Routes>
             </main>
