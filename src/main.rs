@@ -6,8 +6,19 @@ async fn main() {
     use leptos::prelude::*;
     use leptos_axum::{generate_route_list, LeptosRoutes};
     use ru_leptos3::app::*;
-
+    use axum_session::{SessionConfig, SessionLayer, SessionStore};
+    use axum_session_sqlx::SessionSqlitePool;
+    
     dotenvy::dotenv().ok();
+    ru_leptos3::server::db::init_db().await;
+    let db_pool = ru_leptos3::server::db::get_db();
+        let session_config = SessionConfig::default()
+        .with_table_name("sessions_table");
+    let session_store = SessionStore::<SessionSqlitePool>::new(
+        Some(db_pool.clone().into()),
+        session_config
+    ).await.unwrap();
+
     let conf = get_configuration(None).unwrap();
     let addr = conf.leptos_options.site_addr;
     let leptos_options = conf.leptos_options;
@@ -20,6 +31,7 @@ async fn main() {
             move || shell(leptos_options.clone())
         })
         .fallback(leptos_axum::file_and_error_handler(shell))
+        .layer(SessionLayer::new(session_store))
         .with_state(leptos_options);
 
     // run our app with hyper

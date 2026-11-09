@@ -23,7 +23,8 @@ sqlx = { version = "0.9", optional = true, features = [
   "uuid", "time", "json",
 ] }
 chrono = { version = "0.4", features = ["serde"] }
-
+axum_session = { version = "0.22", optional = true }
+axum_session_sqlx = { version = "0.12", optional = true, features = ["sqlite"] }
 
 [features]
 hydrate = [
