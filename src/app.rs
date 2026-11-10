@@ -74,7 +74,7 @@ fn HomePage() -> impl IntoView {
 }
 
 #[derive(TableRow, Clone)]
-#[table(impl_vec_data_provider)]
+#[table(impl_vec_data_provider,sortable)]
 pub struct Person {
     id: u32,
     name: String,
@@ -94,7 +94,7 @@ fn AboutPage() -> impl IntoView {
     view! {
         <h4>"Persons"</h4>
         <table>
-            <TableContent rows scroll_container="" />
+            <TableContent rows scroll_container="" sorting_mode=SortingMode::SingleColumn />
         </table>
     }
 }
